@@ -58,11 +58,11 @@ module Enumerable
     true
   end
 
-  def my_count(nVal = nil)
+  def my_count(nval = nil)
     counter=0
-    if nVal!=nil
+    if nval!=nil
       my_each do |value|
-        counter += 1 if (nVal == value)
+        counter += 1 if (nval == value)
       end
     else 
       my_each do |value|
@@ -82,9 +82,9 @@ module Enumerable
     new_array
   end
 
-  def my_inject(nVal = nil, nSym = nil, nProc = nil)
+  def my_inject(nval = nil, nsym = nil, nproc = nil)
     temp_arr = to_a
-    params = compareParams([temp_arr[0], :+, proc{}],[nVal, nSym, nProc])
+    params = compareParams([temp_arr[0], :+, proc{}],[nval, nsym, nproc])
     total=nil
     temp_arr.unshift(params[0]) if params[0]!=nil
     if params[1]!=nil
