@@ -84,4 +84,17 @@ module Enumerable
     end
     return true
   end
+  def my_count(nVal=nil)
+    counter=0
+    if nVal!=nil
+      my_each do |value|
+        counter += 1 if (nVal==value)
+      end
+    else 
+      my_each do |value|
+        counter += 1
+      end
+    end
+    return counter
+  end
 end
