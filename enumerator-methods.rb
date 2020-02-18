@@ -105,4 +105,56 @@ module Enumerable
     end
     return new_array
   end
+  def my_inject(nVal=nil, nSym=nil, nProc=nil)
+    temp_arr = to_a
+    params = compareParams([temp_arr[0], :+, proc{}],[nVal, nSym, nProc])
+    total=nil
+    temp_arr.unshift(params[0]) if params[0]!=nil
+    if params[1]!=nil
+      case params[1]
+      when :+
+        return temp_arr.my_inject {|total, a| total+a}
+      when :-
+        return temp_arr.my_inject {|total, a| total-a}
+      when :*
+        return temp_arr.my_inject {|total, a| total*a}
+      when :/
+        return temp_arr.my_inject {|total, a| total/a}
+      when :**
+        return temp_arr.my_inject {|total, a| total**a}
+      when :&
+        return temp_arr.my_inject {|total, a| total && a}
+      when :|
+        return temp_arr.my_inject {|total, a| total || a}
+      end
+    end
+    temp_arr.my_each_with_index do |value, index|
+      if index!=0
+        if params[2]!=nil
+          total = params[2].call(total, value)
+        else
+          total = yield total, value
+        end
+      else
+        total = value
+      end
+    end
+    return total
+  end
+  def compareParams(types, params)
+    new_params= Array.new(types.length, nil) 
+    i=types.length-1
+    while i>=0
+      j=0
+      while j<params.length
+        if types[i].class == params[j].class
+          new_params[i]=params[j]
+          break
+        end
+        j+=1
+      end
+      i-=1
+    end
+    return new_params
+  end
 end
