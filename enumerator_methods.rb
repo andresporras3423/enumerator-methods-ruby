@@ -9,8 +9,8 @@ module Enumerable
       x += 1
     end
   end
-  
   def my_each_with_index
+    
     return to_enum unless block_given?
 
     x = 0
