@@ -26,9 +26,7 @@ module Enumerable
 
     accepted = []
     my_each do |value|
-      if yield value
-        accepted << value
-      end
+      accepted << value if yield value
     end
     return accepted
   end
