@@ -86,7 +86,7 @@ module Enumerable
         counter += 1
       end
     end
-    return counter
+    counter
   end
 
   def my_map
@@ -96,7 +96,7 @@ module Enumerable
     my_each do |value|
       new_array << (yield value)
     end
-    return new_array
+    new_array
   end
 
   def my_inject(nVal = nil, nSym = nil, nProc = nil)
@@ -133,7 +133,7 @@ module Enumerable
         total = value
       end
     end
-    return total
+    total
   end
 
   def compareParams(types, params)
@@ -150,6 +150,6 @@ module Enumerable
       end
       i -= 1
     end
-    return new_params
+    new_params
   end
 end
