@@ -29,4 +29,14 @@ module Enumerable
       x+=1
     end
   end
+  def my_select
+    return to_enum unless block_given?
+    accepted = []
+    my_each do |value|
+      if yield value
+        accepted << value
+      end
+    end
+    return accepted
+  end
 end
