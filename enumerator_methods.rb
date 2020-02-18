@@ -50,13 +50,8 @@ module Enumerable
   end
 
   def my_none?
-    unless block_given?
-      if (my_none?{|x| x != nil})
-        return true
-      else
-        return false
-      end
-    end
+    return (my_none? { |x| !x.nil? } ) unless block_given?
+
     my_each do |value|
       if (yield value)
         return false
