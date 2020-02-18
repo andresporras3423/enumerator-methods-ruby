@@ -87,24 +87,8 @@ module Enumerable
     params = compareParams([temp_arr[0], :+, proc{}],[nval, nsym, nproc])
     total=nil
     temp_arr.unshift(params[0]) if params[0]!=nil
-    if params[1]!=nil
-      case params[1]
-      when :+
-        return temp_arr.my_inject {|total, a| total + a}
-      when :-
-        return temp_arr.my_inject {|total, a| total - a}
-      when :*
-        return temp_arr.my_inject {|total, a| total * a}
-      when :/
-        return temp_arr.my_inject {|total, a| total / a}
-      when :**
-        return temp_arr.my_inject {|total, a| total ** a}
-      when :&
-        return temp_arr.my_inject {|total, a| total && a}
-      when :|
-        return temp_arr.my_inject {|total, a| total || a}
-      end
-    end
+    return symbolInject(params[1], temp_arr) if params[1]!=nil
+
     temp_arr.my_each_with_index do |value, index|
       if index != 0
         if params[2] != nil
@@ -117,6 +101,25 @@ module Enumerable
       end
     end
     total
+  end
+
+  def symbolInject(param, temp_arr)
+    case param
+    when :+
+      return temp_arr.my_inject {|total, a| total + a}
+    when :-
+      return temp_arr.my_inject {|total, a| total - a}
+    when :*
+      return temp_arr.my_inject {|total, a| total * a}
+    when :/
+      return temp_arr.my_inject {|total, a| total / a}
+    when :**
+      return temp_arr.my_inject {|total, a| total ** a}
+    when :&
+      return temp_arr.my_inject {|total, a| total && a}
+    when :|
+      return temp_arr.my_inject {|total, a| total || a}
+    end
   end
 
   def compareParams(types, params)
