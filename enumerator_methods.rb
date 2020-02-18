@@ -33,7 +33,7 @@ module Enumerable
 
   def my_all?
     unless block_given?
-      return true if (my_all?{|x| x != nil}) else return false
+      return (my_all?{|x| x != nil})
     end
     my_each do |value|
       if !(yield value)
