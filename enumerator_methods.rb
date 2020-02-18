@@ -41,7 +41,7 @@ module Enumerable
   end
 
   def my_any?
-    return (my_any?{|x| x!= nil}) unless block_given?
+    return (my_any? { |x| !x.nil? } ) unless block_given?
 
     my_each do |value|
       return true if yield value
