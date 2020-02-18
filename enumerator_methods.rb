@@ -59,13 +59,13 @@ module Enumerable
   end
 
   def my_count(nval = nil)
-    counter=0
-    if nval!=nil
+    counter = 0
+    if !nval.nil?
       my_each do |value|
-        counter += 1 if (nval == value)
+        counter += 1 if nval == value
       end
-    else 
-      my_each do |value|
+    else
+      my_each do
         counter += 1
       end
     end
