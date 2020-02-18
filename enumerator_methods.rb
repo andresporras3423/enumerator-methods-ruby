@@ -20,6 +20,7 @@ module Enumerable
       x += 1
     end
   end
+
   def my_select
     return to_enum unless block_given?
     accepted = []
@@ -30,6 +31,7 @@ module Enumerable
     end
     return accepted
   end
+
   def my_all?
     if !block_given?
       if (my_all?{|x| x != nil})
@@ -45,6 +47,7 @@ module Enumerable
     end
     return true
   end
+
   def my_any?
     if !block_given?
       if (my_any?{|x| x!= nil})
@@ -60,6 +63,7 @@ module Enumerable
     end
     return false
   end
+
   def my_none?
     if !block_given?
       if (my_none?{|x| x != nil})
@@ -75,6 +79,7 @@ module Enumerable
     end
     return true
   end
+
   def my_count(nVal = nil)
     counter=0
     if nVal!=nil
@@ -88,6 +93,7 @@ module Enumerable
     end
     return counter
   end
+
   def my_map
     return to_enum unless block_given?
     new_array = []
@@ -96,6 +102,7 @@ module Enumerable
     end
     return new_array
   end
+
   def my_inject(nVal = nil, nSym = nil, nProc = nil)
     temp_arr = to_a
     params = compareParams([temp_arr[0], :+, proc{}],[nVal, nSym, nProc])
@@ -132,6 +139,7 @@ module Enumerable
     end
     return total
   end
+
   def compareParams(types, params)
     new_params= Array.new(types.length, nil) 
     i=types.length-1
