@@ -87,7 +87,7 @@ module Enumerable
     params = compareParams([temp_arr[0], :+, proc {} ], [nval, nsym, nproc])
     total = nil
     temp_arr.unshift(params[0]) if !params[0].nil?
-    return symbolInject(params[1], temp_arr) if !params[0].nil?
+    return symbolInject(params[1], temp_arr) if !params[1].nil?
 
     temp_arr.my_each_with_index do |value, index|
       if index != 0
