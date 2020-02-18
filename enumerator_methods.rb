@@ -28,7 +28,7 @@ module Enumerable
     my_each do |value|
       accepted << value if yield value
     end
-    return accepted
+    accepted
   end
 
   def my_all?
