@@ -91,10 +91,11 @@ module Enumerable
 
     temp_arr.my_each_with_index do |value, index|
       if index != 0
-        if params[2] != nil
-          total = params[2].call(total, value)
-        else
+        case params[2]
+        when nil
           total = yield total, value
+        else
+          total = params[2].call(total, value)
         end
       else
         total = value
