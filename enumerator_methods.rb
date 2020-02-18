@@ -1,6 +1,7 @@
 module Enumerable
   def my_each
     return to_enum unless block_given?
+
     x = 0
     array = to_a
     while x < array.length
@@ -10,6 +11,7 @@ module Enumerable
   end
   def my_each_with_index
     return to_enum unless block_given?
+    
     x = 0
     array = to_a
     while x < array.length
