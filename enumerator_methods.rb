@@ -32,7 +32,7 @@ module Enumerable
   end
 
   def my_all?
-    if !block_given?
+    unless block_given?
       if (my_all?{|x| x != nil})
         return true
       else
@@ -48,7 +48,7 @@ module Enumerable
   end
 
   def my_any?
-    if !block_given?
+    unless block_given?
       if (my_any?{|x| x!= nil})
         return true
       else
@@ -60,11 +60,11 @@ module Enumerable
         return true
       end
     end
-    return false
+    false
   end
 
   def my_none?
-    if !block_given?
+    unless block_given?
       if (my_none?{|x| x != nil})
         return true
       else
@@ -76,7 +76,7 @@ module Enumerable
         return false
       end
     end
-    return true
+    true
   end
 
   def my_count(nVal = nil)
