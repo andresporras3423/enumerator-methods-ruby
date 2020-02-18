@@ -16,7 +16,7 @@ module Enumerable
   end
   def my_each_with_index
     return to_enum unless block_given?
-    x=0
+    x = 0
     array = nil
     self_class = self.class
     if self_class == Array
@@ -26,7 +26,7 @@ module Enumerable
     end
     while x < array.length
       yield array[x], x
-      x+=1
+      x += 1
     end
   end
   def my_select
@@ -41,7 +41,7 @@ module Enumerable
   end
   def my_all?
     if !block_given?
-      if (my_all?{|x| x!=nil})
+      if (my_all?{|x| x != nil})
         return true
       else
         return false
@@ -56,7 +56,7 @@ module Enumerable
   end
   def my_any?
     if !block_given?
-      if (my_any?{|x| x!=nil})
+      if (my_any?{|x| x!= nil})
         return true
       else
         return false
@@ -71,7 +71,7 @@ module Enumerable
   end
   def my_none?
     if !block_given?
-      if (my_none?{|x| x!=nil})
+      if (my_none?{|x| x != nil})
         return true
       else
         return false
@@ -84,11 +84,11 @@ module Enumerable
     end
     return true
   end
-  def my_count(nVal=nil)
+  def my_count(nVal = nil)
     counter=0
     if nVal!=nil
       my_each do |value|
-        counter += 1 if (nVal==value)
+        counter += 1 if (nVal == value)
       end
     else 
       my_each do |value|
@@ -99,13 +99,13 @@ module Enumerable
   end
   def my_map
     return to_enum unless block_given?
-    new_array=[]
+    new_array = []
     my_each do |value|
       new_array << (yield value)
     end
     return new_array
   end
-  def my_inject(nVal=nil, nSym=nil, nProc=nil)
+  def my_inject(nVal = nil, nSym = nil, nProc = nil)
     temp_arr = to_a
     params = compareParams([temp_arr[0], :+, proc{}],[nVal, nSym, nProc])
     total=nil
@@ -113,15 +113,15 @@ module Enumerable
     if params[1]!=nil
       case params[1]
       when :+
-        return temp_arr.my_inject {|total, a| total+a}
+        return temp_arr.my_inject {|total, a| total + a}
       when :-
-        return temp_arr.my_inject {|total, a| total-a}
+        return temp_arr.my_inject {|total, a| total - a}
       when :*
-        return temp_arr.my_inject {|total, a| total*a}
+        return temp_arr.my_inject {|total, a| total * a}
       when :/
-        return temp_arr.my_inject {|total, a| total/a}
+        return temp_arr.my_inject {|total, a| total / a}
       when :**
-        return temp_arr.my_inject {|total, a| total**a}
+        return temp_arr.my_inject {|total, a| total ** a}
       when :&
         return temp_arr.my_inject {|total, a| total && a}
       when :|
@@ -129,8 +129,8 @@ module Enumerable
       end
     end
     temp_arr.my_each_with_index do |value, index|
-      if index!=0
-        if params[2]!=nil
+      if index != 0
+        if params[2] != nil
           total = params[2].call(total, value)
         else
           total = yield total, value
@@ -144,16 +144,16 @@ module Enumerable
   def compareParams(types, params)
     new_params= Array.new(types.length, nil) 
     i=types.length-1
-    while i>=0
-      j=0
-      while j<params.length
+    while i >= 0
+      j = 0
+      while j < params.length
         if types[i].class == params[j].class
-          new_params[i]=params[j]
+          new_params[i] = params[j]
           break
         end
-        j+=1
+        j += 1
       end
-      i-=1
+      i -= 1
     end
     return new_params
   end
