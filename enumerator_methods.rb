@@ -90,7 +90,7 @@ module Enumerable
     return symbolInject(params[1], temp_arr) unless params[1].nil?
 
     temp_arr.my_each_with_index do |value, index|
-      total = if index == 0
+      total = if index.zero?
         value
       elsif params[2].nil?
         yield total, value
