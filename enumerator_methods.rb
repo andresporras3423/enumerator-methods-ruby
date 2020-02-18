@@ -90,14 +90,12 @@ module Enumerable
     return symbolInject(params[1], temp_arr) unless params[1].nil?
 
     temp_arr.my_each_with_index do |value, index|
-      if index != 0
-        total = if params[2].nil?
-          yield total, value
-        else
-          params[2].call(total, value)
-        end
+      total = if index == 0
+        value
+      elsif params[2].nil?
+        yield total, value
       else
-        total = value
+        params[2].call(total, value)
       end
     end
     total
