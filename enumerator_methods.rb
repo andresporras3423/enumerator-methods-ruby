@@ -23,6 +23,7 @@ module Enumerable
 
   def my_select
     return to_enum unless block_given?
+
     accepted = []
     my_each do |value|
       if yield value
@@ -96,6 +97,7 @@ module Enumerable
 
   def my_map
     return to_enum unless block_given?
+
     new_array = []
     my_each do |value|
       new_array << (yield value)
