@@ -39,4 +39,19 @@ module Enumerable
     end
     return accepted
   end
+  def my_all?
+    if !block_given?
+      if (my_all?{|x| x!=nil})
+        return true
+      else
+        return false
+      end
+    end
+    my_each do |value|
+      if !(yield value)
+        return false
+      end
+    end
+    return true
+  end
 end
