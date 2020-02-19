@@ -84,10 +84,10 @@ module Enumerable
 
   def my_inject(nval = nil, nsym = nil, nproc = nil)
     temp_arr = to_a
-    params = compareParams([temp_arr[0], :+, proc {}], [nval, nsym, nproc])
+    params = compare_params([temp_arr[0], :+, proc {}], [nval, nsym, nproc])
     total = nil
     temp_arr.unshift(params[0]) unless params[0].nil?
-    return symbolInject(params[1], temp_arr) unless params[1].nil?
+    return symbol_inject(params[1], temp_arr) unless params[1].nil?
 
     temp_arr.my_each_with_index do |value, index|
       total = if index.zero?
@@ -101,26 +101,14 @@ module Enumerable
     total
   end
 
-  def symbolInject(param, temp_arr)
-    case param
-    when :+
-      return temp_arr.my_inject {|total, a| total + a}
-    when :-
-      return temp_arr.my_inject {|total, a| total - a}
-    when :*
-      return temp_arr.my_inject {|total, a| total * a}
-    when :/
-      return temp_arr.my_inject {|total, a| total / a}
-    when :**
-      return temp_arr.my_inject {|total, a| total ** a}
-    when :&
-      return temp_arr.my_inject {|total, a| total && a}
-    when :|
-      return temp_arr.my_inject {|total, a| total || a}
+  def symbol_inject(param, temp_arr)
+    symbols = [[:+,'+'],[:-,'-'],[:*,'*'],[:/,'/'],[:**,'**'],[:&,'&&'],[:|,'||']]
+    symbols.my_each do |value|
+      return temp_arr.my_inject {|total, a| eval(total.to_s+' '+value[1]+' '+a.to_s)} if param == value[0]
     end
   end
 
-  def compareParams(types, params)
+  def compare_params(types, params)
     new_params= Array.new(types.length, nil) 
     i=types.length-1
     while i >= 0
