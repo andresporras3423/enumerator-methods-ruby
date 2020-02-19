@@ -18,10 +18,10 @@ puts 'EXAMPLE MY_EACH'
 lista.my_each do |lis|
   puts "I want a #{lis}"
 end
-puts 'EXAMPLE MY_EACH_WITH_INDEX' 
-lista.my_each_with_index { |n, i| puts "product number #{i+1} is: #{n}" }
-puts 'EXAMPLE MY_SELECT' 
-puts [1,2,3,4,5,6].my_select { |n| n % 2 == 0 }
+puts 'EXAMPLE MY_EACH_WITH_INDEX'
+lista.my_each_with_index { |n, i| puts "product number #{i + 1} is: #{n}" }
+puts 'EXAMPLE MY_SELECT'
+puts ([1,2,3,4,5,6].my_select) { |n| n % 2 == 0 }
 puts 'EXAMPLE MY_ALL?' 
 puts lista.my_all?{|x| x.length > 3}
 puts 'EXAMPLE ANY?' 
