@@ -15,7 +15,7 @@ Second Microverse project for Ruby Curriculum
 - Extending Enumerable module to add more methods that received both arrays and ranges
 - multiply_els in main.rb
 - Using yield and call method as it was required
-- my_inject method receive the next list of symbols (+, -, *, /, **, & and ||)
+- my_inject method receive the next symbols (+, -, *, /, **, & and ||)
 
 ## Built With
 
