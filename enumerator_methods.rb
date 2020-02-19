@@ -102,22 +102,8 @@ module Enumerable
   end
 
   def symbolInject(param, temp_arr)
-    case param
-    when :+
-      return temp_arr.my_inject {|total, a| total + a}
-    when :-
-      return temp_arr.my_inject {|total, a| total - a}
-    when :*
-      return temp_arr.my_inject {|total, a| total * a}
-    when :/
-      return temp_arr.my_inject {|total, a| total / a}
-    when :**
-      return temp_arr.my_inject {|total, a| total ** a}
-    when :&
-      return temp_arr.my_inject {|total, a| total && a}
-    when :|
-      return temp_arr.my_inject {|total, a| total || a}
-    end
+    symbols=[:+,:-,:*,:/,:**,:&,:|]
+    symbols.my_each {|value| return temp_arr.my_inject {|total, a| total + a} if value == param}
   end
 
   def compareParams(types, params)
