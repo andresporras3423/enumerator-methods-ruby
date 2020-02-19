@@ -91,7 +91,7 @@ module Enumerable
 
     temp_arr.my_each_with_index do |value, index|
       total = if index.zero?
-        value
+                value
 elsif params[2].nil?
 yield total, value
 else
