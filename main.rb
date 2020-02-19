@@ -12,5 +12,5 @@ def multiply_els(arr)
     arr.my_inject(by_proc)
   end
 end
- 
-puts multiply_els([2,4,5])
+
+puts multiply_els([2, 4, 5])
