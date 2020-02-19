@@ -102,8 +102,9 @@ module Enumerable
   end
 
   def symbolInject(param, temp_arr)
+    useless = true
     symbols=[:+,:-,:*,:/,:**,:&,:|]
-    symbols.my_each {|value| return temp_arr.my_inject {|total, a| total + a} if value == param}
+    symbols.my_each {|value| return temp_arr.my_inject {|total, a| total + a} if value == param && useless}
   end
 
   def compareParams(types, params)
