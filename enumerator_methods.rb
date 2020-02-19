@@ -87,7 +87,7 @@ module Enumerable
     params = compareParams([temp_arr[0], :+, proc {}], [nval, nsym, nproc])
     total = nil
     temp_arr.unshift(params[0]) unless params[0].nil?
-    return symbolInject(params[1], temp_arr, true) unless params[1].nil?
+    return symbolInject(params[1], temp_arr) unless params[1].nil?
 
     temp_arr.my_each_with_index do |value, index|
       total = if index.zero?
@@ -101,9 +101,23 @@ module Enumerable
     total
   end
 
-  def symbolInject(param, temp_arr, useless)
-    symbols=[:+,:-,:*,:/,:**,:&,:|]
-    symbols.my_each {|value| return temp_arr.my_inject {|total, a| total + a} if value == param && (useless or false)}
+  def symbolInject(param, temp_arr)
+    case param
+    when :+
+      return temp_arr.my_inject {|total, a| total + a}
+    when :-
+      return temp_arr.my_inject {|total, a| total - a}
+    when :*
+      return temp_arr.my_inject {|total, a| total * a}
+    when :/
+      return temp_arr.my_inject {|total, a| total / a}
+    when :**
+      return temp_arr.my_inject {|total, a| total ** a}
+    when :&
+      return temp_arr.my_inject {|total, a| total && a}
+    when :|
+      return temp_arr.my_inject {|total, a| total || a}
+    end
   end
 
   def compareParams(types, params)
