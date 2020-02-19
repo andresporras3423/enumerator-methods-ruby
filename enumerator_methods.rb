@@ -102,9 +102,9 @@ module Enumerable
   end
 
   def symbol_inject(param, temp_arr)
-    symbols = [[:+, '+'],[:-, '-'],[:*, '*'],[:/, '/'],[:**, '**'],[:&, '&&'],[:|, '||']]
+    symbols = [[:+, '+'], [:-, '-'], [:*, '*'], [:/, '/'], [:**, '**'], [:&, '&&'], [:|, '||']]
     symbols.my_each do |value|
-      return temp_arr.my_inject {|total, a| total.method(value[1]).(a)} if param == value[0]
+      return temp_arr.my_inject { |total, a| total.method(value[1]).call(a) } if param == value[0]
     end
   end
 
