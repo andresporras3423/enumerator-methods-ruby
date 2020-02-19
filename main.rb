@@ -13,7 +13,7 @@ def multiply_els(arr)
   end
 end
 
-lista = ["hamburguer", "pizza", "hot dog", "hamburguer", "sushi"]
+lista = ['hamburguer', 'pizza', 'hot dog', 'hamburguer', 'sushi']
 puts 'EXAMPLE MY_EACH'
 lista.my_each do |lis|
   puts "I want a #{lis}"
