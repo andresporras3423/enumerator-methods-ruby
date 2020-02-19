@@ -91,11 +91,11 @@ module Enumerable
 
     temp_arr.my_each_with_index do |value, index|
       total = if index.zero?
-        value
-        elsif params[2].nil?
-        yield total, value
-        else
-        params[2].call(total, value)
+value
+elsif params[2].nil?
+yield total, value
+else
+params[2].call(total, value)
       end
     end
     total
