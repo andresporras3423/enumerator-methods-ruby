@@ -4,7 +4,7 @@ def multiply_els(arr)
   rand_method = rand(1..3)
   case rand_method
   when 1 # by block
-    puts arr.my_inject { |total, a| total * a }
+    puts arr.my_inject() { |total, a| total * a }
   when 2 # by symbol
     puts arr.my_inject(:*)
   when 3 # by proc
@@ -13,7 +13,7 @@ def multiply_els(arr)
   end
 end
 
-lista = ["hamburguer","pizza","hot dog","hamburguer","sushi"]
+lista = ["hamburguer", "pizza", "hot dog", "hamburguer", "sushi"]
 puts 'EXAMPLE MY_EACH'
 lista.my_each do |lis|
   puts "I want a #{lis}"
