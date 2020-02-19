@@ -6,10 +6,10 @@ def multiply_els(arr)
   when 1 # by block
     arr.my_inject { |total, a| total * a }
   when 2 # by symbol
-    puts arr.my_inject(:*)
+    arr.my_inject(:*)
   when 3 # by proc
     by_proc = proc { |total, a| total * a }
-    puts arr.my_inject(by_proc)
+    arr.my_inject(by_proc)
   end
 end
 
@@ -42,4 +42,4 @@ puts (6..10).my_inject(5,c)
 puts (6..10).my_inject(5){ |sum, n| sum - n } 
 puts (6..10).my_inject(5,:-)
 puts 'EXAMPLE MULTIPLY_ELS' 
-multiply_els([2,4,5])
+puts multiply_els([2,4,5])
