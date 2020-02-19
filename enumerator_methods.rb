@@ -109,8 +109,8 @@ module Enumerable
   end
 
   def compare_params(types, params)
-    new_params= Array.new(types.length, nil) 
-    i=types.length-1
+    new_params = Array.new(types.length, nil)
+    i = types.length - 1
     while i >= 0
       j = 0
       while j < params.length
