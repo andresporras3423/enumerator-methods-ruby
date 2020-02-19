@@ -43,7 +43,6 @@ puts (6..10).my_inject(5){ |sum, n| sum - n }
 puts (6..10).my_inject(5,:-)
 puts 'EXAMPLE MULTIPLY_ELS' 
 multiply_els([2,4,5])
-total=27.7
 # string1='EXAMPLE MY_EACH'
 # string1+="\nI want a hamburguer"
 # string1+="\nI want a pizza"
